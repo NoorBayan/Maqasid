@@ -1,0 +1,71 @@
+# Python Virtual Environments
+venv/
+/venv/
+.venv/
+/.venv/
+env/
+/env/
+.env/
+/.env/
+ENV/
+/ENV/
+
+# Python Bytecode and Cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Environment Variables
+# The .env.example file SHOULD be committed.
+.env
+.env.*
+!.env.example
+
+# Large Data and Model Files (Handled by DVC)
+# DVC creates small .dvc pointer files which SHOULD be committed.
+/data/
+/saved_models/
+
+# Keep the directory structure but ignore the contents initially.
+!/data/.gitkeep
+!/saved_models/.gitkeep
+
+# DVC internal cache directory. This should NEVER be committed.
+.dvc/cache
+
+# IDE and Editor Configuration Files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Operating System Generated Files
+.DS_Store
+Thumbs.db
+._*
+
+# Build, Distribution, and Installation Artifacts
+build/
+dist/
+*.egg-info/
+*.egg
+*.whl
+
+# Test and Coverage Reports
+.pytest_cache/
+htmlcov/
+.coverage
+*.cover
+
+# Temporary Files and Logs
+*.log
+logs/
+*.tmp
+temp/
+
+# HPO and Notebook Checkpoints
+hpo_results/
+hpo_run_example/
+.ipynb_checkpoints/

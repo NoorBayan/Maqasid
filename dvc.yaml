@@ -1,0 +1,73 @@
+# ==========================================================
+#  DVC Pipeline Definition
+# ==========================================================
+# This file defines the stages of the machine learning pipeline.
+# To run the entire pipeline, use the command `dvc repro`.
+
+stages:
+  # --- Stage 1: Preprocess Raw Data ---
+  preprocess:
+    cmd: python scripts/01_preprocess_data.py --input data/raw/diwan_corpus.csv --output data/processed/preprocessed_poems.csv
+    deps:
+      - data/raw/diwan_corpus.csv
+      - scripts/01_preprocess_data.py
+      - src/poetry_classifier/data_processing.py
+    outs:
+      - data/processed/preprocessed_poems.csv
+
+  # --- Stage 2: Train FastText Embeddings ---
+  train_embeddings:
+    cmd: python scripts/02_train_embeddings.py --corpus data/processed/preprocessed_poems.csv --output saved_models/embeddings/fasttext_poetry.bin --vector-size ${train_embeddings.vector_size} --epochs ${train_embeddings.epochs}
+    deps:
+      - data/processed/preprocessed_poems.csv
+      - scripts/02_train_embeddings.py
+      - src/poetry_classifier/embedding.py
+    params:
+      - train_embeddings.vector_size
+      - train_embeddings.epochs
+    outs:
+      - saved_models/embeddings/fasttext_poetry.bin
+
+  # --- Stage 3: Prepare Final Datasets (including segmentation and splitting) ---
+  prepare_final_data:
+    cmd: python scripts/03_prepare_final_data.py --input data/processed/preprocessed_poems.csv --embedder saved_models/embeddings/fasttext_poetry.bin --output-dir data/annotated --eps ${segment_and_embed.eps}
+    deps:
+      - data/processed/preprocessed_poems.csv
+      - saved_models/embeddings/fasttext_poetry.bin
+      - scripts/03_prepare_final_data.py
+      - src/poetry_classifier/segmentation.py
+    params:
+      - segment_and_embed.eps
+      - segment_and_embed.min_samples
+    outs:
+      - data/annotated/train.csv
+      - data/annotated/validation.csv
+      - data/annotated/test.csv
+
+  # --- Stage 4: Train the Final Classifier Model ---
+  train_model:
+    cmd: python scripts/05_train_final_model.py --train-data data/annotated/train.csv --val-data data/annotated/validation.csv --output-dir saved_models/classifier --params-file params.yaml
+    deps:
+      - data/annotated/train.csv
+      - data/annotated/validation.csv
+      - scripts/05_train_final_model.py
+      - src/poetry_classifier/model.py
+      - src/poetry_classifier/trainer.py
+      - src/poetry_classifier/dataset.py
+    params:
+      - train_model
+    outs:
+      - saved_models/classifier/best_poetry_classifier.pth
+      - saved_models/classifier/model_config.json
+      - reports/training_history.json
+
+  # --- Stage 5: Evaluate the Final Model on the Test Set ---
+  evaluate:
+    cmd: python scripts/evaluate.py --model-dir saved_models/classifier --test-data data/annotated/test.csv --output-file reports/metrics.json
+    deps:
+      - saved_models/classifier/best_poetry_classifier.pth
+      - data/annotated/test.csv
+      - scripts/evaluate.py
+    metrics:
+      - reports/metrics.json:
+          cache: false

@@ -1,0 +1,61 @@
+# ==========================================================
+#  DVC Ignore File
+# ==========================================================
+# This file specifies files and directories that DVC should
+# ignore and not attempt to track. The syntax is the same
+# as .gitignore.
+
+# --- Directories managed by Git ---
+# We explicitly tell DVC to ignore our source code, tests, and web app code,
+# as these are handled by Git.
+src/
+tests/
+web_app/
+pages/
+core/
+notebooks/
+
+# --- Project Configuration and Metadata Files ---
+# These are small text files tracked by Git.
+.gitignore
+.dvcignore
+dvc.yaml
+dvc.lock
+README.md
+LICENSE
+Makefile
+requirements.txt
+requirements_app.txt
+config.yaml
+params.yaml  # Common file for DVC pipeline parameters
+
+# --- Python-related files and directories ---
+# These should be ignored by both Git and DVC.
+__pycache__/
+*.pyc
+venv/
+.env
+.env.example
+
+# --- Temporary Files and Logs ---
+# Ignore any log files generated during pipeline runs.
+*.log
+logs/
+
+# --- HPO and Experimentation Artifacts ---
+# Ignore temporary outputs from HPO runs that are not the final model.
+# The final selected model should be added to DVC manually or via the pipeline.
+hpo_results/
+hpo_run_example/
+
+# --- Locally Generated Plots and Reports ---
+# Any plots or reports generated for local analysis that are not part of the
+# official pipeline outputs.
+local_plots/
+*.png
+*.html
+
+# --- IDE and OS-specific files ---
+.idea/
+.vscode/
+*.DS_Store

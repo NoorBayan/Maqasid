@@ -85,7 +85,7 @@ This dashboard provides an intuitive way to navigate the corpus through its rich
 <p align="center">
   <em>The interactive poem browser in action, allowing users to filter poems by theme and view a detailed analysis with a dynamic chart.</em>
   <br>
-  <img src="https://raw.githubusercontent.com/NoorBayan/Maqasid/main/images/ThematicPoem.png" width="500px"/>
+  <img src="https://raw.githubusercontent.com/NoorBayan/Maqasid/main/images/ThematicPoem.png" width="600px"/>
 </p>
 
 #### 2. Cross-Era Thematic Analysis Dashboard

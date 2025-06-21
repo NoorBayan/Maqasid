@@ -40,9 +40,7 @@ This project moves beyond simple single-label classification by introducing a no
 - [🔬 Interactive Exploration with Google Colab](#-interactive-exploration-with-google-colab)
 - [🛠️ Technology Stack](#-technology-stack)
 - [🚀 Getting Started](#-getting-started)
-- [📂 Project Structure](#-project-structure)
 - [🤝 Contributing](#-contributing)
-- [🎓 Citing This Work](#-citing-this-work)
 - [📄 License](#-license)
 
 ---
@@ -163,23 +161,6 @@ Follow these instructions to set up and run the project on your local machine.
 
 ---
 
-## 📂 Project Structure
-
-The project follows a modular and scalable structure to separate concerns:
-
-```
-├── data/              # Raw, processed, and annotated datasets (tracked by DVC)
-├── saved_models/      # Trained models and embeddings (tracked by DVC)
-├── src/               # Core Python source code for the classification pipeline
-├── web_app/           # Source code for the Streamlit interactive application
-├── scripts/           # Executable scripts for running pipeline stages
-├── tests/             # Unit tests for the project
-├── .dvc/              # DVC metadata
-├── dvc.yaml           # DVC pipeline definition
-└── requirements.txt   # Project dependencies
-```
-
----
 
 ## 🤝 Contributing
 

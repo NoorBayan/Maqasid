@@ -6,9 +6,6 @@
     <strong>A Deep Learning Framework for Nuanced Thematic Classification of Arabic Poetry</strong>
   </p>
   <p align="center">
-    <a href="https://your-streamlit-app-link.streamlit.app">
-      <img src="https://static.streamlit.io/badges/streamlit_badge_black_white.svg" alt="Streamlit App">
-    </a>
     <a href="https://opensource.org/licenses/MIT">
       <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT">
     </a>
@@ -40,7 +37,6 @@ This project moves beyond simple single-label classification by introducing a no
 - [🔬 Interactive Exploration with Google Colab](#-interactive-exploration-with-google-colab)
 - [🛠️ Technology Stack](#-technology-stack)
 - [🚀 Getting Started](#-getting-started)
-- [🤝 Contributing](#-contributing)
 - [📄 License](#-license)
 
 ---
@@ -59,7 +55,7 @@ This project moves beyond simple single-label classification by introducing a no
 
 At the heart of this project is the **Maqasid Corpus**, a new, large-scale, and richly annotated dataset of Arabic poetry. It was constructed to overcome the limitations of existing resources and to serve as a foundational tool for computational literary analysis.
 
-- **Size:** Contains [الرجاء إدخال عدد القصائد، مثلاً +20,000] poems from various historical eras.
+- **Size:** Contains +200,000 poems from various historical eras.
 - **Annotation:** Each poem is annotated with multiple thematic labels from our hierarchical schema, capturing thematic co-occurrence.
 - **Grounding:** The thematic taxonomy was developed through a rigorous synthesis of classical and modern Arabic literary criticism, ensuring scholarly validity.
 - **Accessibility:** The corpus is made available to the research community to foster new, data-driven inquiries into Arabic literature.
@@ -162,17 +158,6 @@ Follow these instructions to set up and run the project on your local machine.
 ---
 
 
-## 🤝 Contributing
-
-Contributions are welcome! Whether it's improving the model, enhancing the web app, or expanding the dataset, your help is appreciated. Please check our [contribution guidelines](CONTRIBUTING.md) (you can create this file later) or open an issue to get started.
-
-1.  Fork the repository.
-2.  Create a feature branch (`git checkout -b feature/YourAmazingFeature`).
-3.  Commit your changes (`git commit -m 'Add some Amazing Feature'`).
-4.  Push to the branch (`git push origin feature/YourAmazingFeature`).
-5.  Open a Pull Request.
-
----
 
 ## 📄 License
 
